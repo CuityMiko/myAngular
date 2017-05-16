@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Angular - ng-repeat</title>
+    <style>
+        .red{
+            color: red;
+        }
+        .green{
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <ul ng-app="myApp" ng-controller="testController">
+        <li ng-repeat="item in datasource" ng-class="{red:$even,green:$odd}">
+            <strong data-id='{{$index}}'>
+                {{$first?'开始':$last?'结束':''}}
+                {{item.id}}:{{item.name}}-{{item.age}}
+            </strong>
+        </li>
+    </ul>
+    <script src="/libs/angular.js"></script>
+    <script>
+        angular.module('myApp',[])
+            .controller('testController',['$scope',function($scope){
+                $scope.datasource=[];
+                for (var i = 1; i < 10; i++) {
+                    $scope.datasource.push({
+                        id:i,
+                        name:'Student'+i,
+                        age:20+i
+                    })               
+                }
+            }]);
+    </script>
+</body>
+</html>

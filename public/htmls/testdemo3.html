@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Angular - ng-bind</title>
+</head>
+<body>
+    <div ng-app="myApp" ng-controller="testController">
+        <strong ng-bind-html="content"></strong>
+    </div>
+    <script src="/libs/angular.js"></script>
+    <script src="/libs/angular-sanitize.js"></script>
+    <script>
+        var myapp=angular.module('myApp',['ngSanitize']);
+        myapp.controller('testController',['$scope',function($scope){
+            $scope.content='<h1>文章标题</h1>'
+        }]);
+    </script>
+</body>
+</html>

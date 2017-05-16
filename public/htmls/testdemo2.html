@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Angular $watch</title>
+    <script src="http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js"></script>
+    <style>
+        [ng-cloak]{
+            display: none;
+        }
+    </style>
+</head>
+<body ng-app="myApp" ng-cloak>
+    
+    <table ng-controller="LoginContorller">
+        <tr>
+            <td>用户名：{{user.name + user.pwd}}</td>
+            <td><input type="text" ng-model="user.name" placeholder="请输入用户名..." /></td>
+        </tr>
+        <tr>
+            <td>密码：</td>
+            <td><input type="password" ng-model="user.pwd" placeholder="请输入密码..." /></td>
+        </tr>
+        <tr>
+            <td><span style="color:red;">{{msg}}</span></td>
+            <td><button ng-click="login()">登录</button></td>
+        </tr>
+    </table>
+    <script>
+        var myapp=angular.module('myApp',[]);
+        myapp.controller("LoginContorller",['$scope',function($scope){
+            $scope.user={name:'',pwd:''};
+            $scope.msg='';
+            $scope.$watch('user.name',function(now,old){
+                if(!now){
+                    $scope.msg='请输入用户名';
+                }else{
+                    $scope.msg='';
+                }
+                console.log(`now:${now},old:${old}`);
+            });
+            $scope.$watch('user.pwd',function(now,old){
+                if(!now){
+                    $scope.msg='请输入密码';
+                }else   
+                    $scope.msg='';
+                console.log(`now:${now},old:${old}`);
+            });
+            $scope.login=function(){
+                console.log(`${$scope.user.name},${$scope.user.pwd}`)
+                if($scope.user.name && $scope.user.pwd){
+                    console.log('登录成功！');
+                }else{
+                    console.log('登录失败！');
+                }
+            }
+        }])
+    </script>
+</body>
+</html>

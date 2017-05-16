@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Angular - 自定义指令</title>
+    <link href="/libs/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <script src="/libs/angular.js"></script>
+    <script>
+        angular.module('myApp',[])
+            .directive('myButton',[function(){
+                return {
+                    template: "<input type='button' value='点击' class='btn btn-primary btn-block' />"
+                };
+            }])
+    </script>
+</head>
+<body ng-app="myApp">
+    <my-button></my-button>
+</body>
+</html>

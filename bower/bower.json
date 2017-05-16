@@ -1,0 +1,22 @@
+{
+  "name": "bower",
+  "homepage": "https://github.com/CuityMiko/myNodePro",
+  "authors": [
+    "CuityMiko <15201776956@163.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.6.4",
+    "jquery": "^3.2.1",
+    "bootstrap": "^3.3.7"
+  }
+}

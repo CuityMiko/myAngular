@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Angular - ng-show/ng-hide/ng-if</title>
+    <script src="/libs/angular.js"></script>
+    <script>
+        angular.module('myApp',[])
+            .controller('testController',['$scope','$timeout',function($scope,$timeout){
+                //$timeout是angular对settimeout的封装
+                $scope.loading=true;
+                $timeout(function(){
+                    $scope.loading=false;
+                },3000)
+            }]);
+    </script>
+</head>
+<body ng-app="myApp" ng-controller="testController">
+    <strong style="color:red;" ng-show="loading">正在加载中....</strong>
+    <p>
+        <input type="checkbox" ng-model="isselect" />
+        <div ng-if="isselect">一段文字....</div>
+    </p>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Angular - ng-switch</title>
+    <script src="/libs/angular.js"></script>
+    <script></script>
+</head>
+<body ng-app>
+    <select ng-model="mysite">
+        <option value="">请选择...</option>
+        <option value="taobao">淘宝</option>
+        <option value="jingdong">京东</option>
+        <option value="tianmao">天猫</option>
+        <option value="xiecheng">携程</option>
+    </select>
+    <div ng-switch="mysite">
+        <p ng-switch-when="taobao">淘宝</p>
+        <p ng-switch-when="jingdong">京东</p>
+        <p ng-switch-when="tianmao">天猫</p>
+        <p ng-switch-when="xiecheng">携程</p>
+        <p ng-switch-default>请选择</p>
+    </div>
+</body>
+</html>

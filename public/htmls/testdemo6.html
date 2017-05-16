@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Angular - ng-repeat 拓展</title>
+    <style>
+        .red{
+            color: red;
+        }
+        .blue{
+            color:blue;
+        }
+    </style>
+</head>
+<body ng-app="myApp" ng-controller="testController">
+    <input type="text" ng-model="startName" />
+    <ul>
+        <li ng-repeat="name in student track by $index" ng-class="{red:name.startsWith(startName),blue:!name.startsWith(startName)}">{{name}}</li>
+    </ul>
+    <script src="/libs/angular.js"></script>
+    <script>
+        angular.module('myApp',[])
+            .controller('testController',['$scope',function($scope){
+                $scope.startName='';
+                $scope.student=[
+                    '张三','王思聪','李四','王五','赵丽颖','李白','王世松','赵六','王思聪','王思聪','王思聪','王思聪'
+                ];
+                $scope.$watch('startName',function(now,old){
+                    console.log(`now:${now},old:${old}`)
+                    //console.log('张三'.startsWith(now))
+                });
+            }]);
+    </script>
+</body>
+</html>
