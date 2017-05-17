@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Angular - filter</title>
+    <script src="/libs/angular.js"></script>
+    <script>
+        var myapp=angular.module('myApp',[]);
+        myapp.controller('testController',['$scope',function($scope){
+            $scope.search='';
+            $scope.students=[
+                {id:1,name:'张三',isstudent:true},
+                {id:2,name:'张庆鹏',isstudent:false},
+                {id:3,name:'王五',isstudent:false},
+                {id:4,name:'赵六',isstudent:true},
+                {id:5,name:'王思聪',isstudent:false},
+                {id:6,name:'张三丰',isstudent:true},
+                {id:7,name:'赵丽颖',isstudent:true},
+                {id:8,name:'李四',isstudent:false},
+            ]
+        }])
+    </script>
+</head>
+<body ng-app="myApp" ng-controller="testController">
+    <input type="text" ng-model="search" />
+    <ul>
+        <!--<li ng-repeat="stu in students | filter:search"> 此方式为全文搜索-->
+            <li ng-repeat="stu in students | filter:{isstudent:true}"> <!--此方式为根据对象值搜索-->
+            <span>{{stu.id}}</span>
+            <span>{{stu.name}}</span>
+            <span>{{stu.isstudent}}</span>
+        </li>
+    </ul>
+</body>
+</html>
